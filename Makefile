@@ -6,7 +6,7 @@
 #    By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/11 15:02:11 by ebaudet           #+#    #+#              #
-#    Updated: 2018/12/11 16:57:54 by ebaudet          ###   ########.fr        #
+#    Updated: 2018/12/12 13:24:54 by ebaudet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # main makefile :
@@ -60,6 +60,10 @@ libc:
 syscall:
 	nasm -f macho64 syscall.s -o syscall.o
 	ld syscall.o -macosx_version_min 10.12 -lSystem
+	./a.out
+test:
+	nasm -f macho64 test.s -o test.o
+	ld test.o -macosx_version_min 10.12 -lSystem
 	./a.out
 
 .PHONY: all clean fclean re
