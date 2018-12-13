@@ -6,7 +6,7 @@
 ;    By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/12/13 14:28:41 by ebaudet           #+#    #+#              ;
-;    Updated: 2018/12/13 16:02:18 by ebaudet          ###   ########.fr        ;
+;    Updated: 2018/12/13 16:03:51 by ebaudet          ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 section .text
@@ -15,7 +15,7 @@ section .text
 _ft_isalnum:
 	cmp rdi, 'A'
 	jl if2
-	cmp rdi, 127
+	cmp rdi, 'Z'
 	jg if2
 	jmp true
 if2:
