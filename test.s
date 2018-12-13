@@ -6,7 +6,7 @@
 ;    By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/12/12 13:24:20 by ebaudet           #+#    #+#              ;
-;    Updated: 2018/12/12 18:13:53 by ebaudet          ###   ########.fr        ;
+;    Updated: 2018/12/13 14:53:01 by ebaudet          ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 %define MACH_SYSCALL(nb)	0x2000000 | nb
@@ -68,7 +68,10 @@ section .text
 	global _main
 	global _print
 	extern _printf
+; Ordre des arguments d'une fonction
 ; %rdi, %rsi, %rdx, %rcx, %r8 and %r9
+; retour d'une fonction
+; %rax
 
 start:
 	call _main
