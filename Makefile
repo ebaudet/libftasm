@@ -6,7 +6,7 @@
 #    By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/11 15:02:11 by ebaudet           #+#    #+#              #
-#    Updated: 2018/12/13 15:45:48 by ebaudet          ###   ########.fr        #
+#    Updated: 2018/12/13 15:51:18 by ebaudet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # main makefile :
@@ -19,7 +19,7 @@ TEST	= a.aout
 SRC		= main.c
 OBJ_DIR	= obj
 OBJ		= $(addprefix obj/, $(SRC:.c=.o))
-ASRC 	= ft_bzero.s ft_tolower.s ft_toupper.s
+ASRC 	= ft_bzero.s ft_tolower.s ft_toupper.s ft_isascii.s
 AOBJ	= $(addprefix obj/, $(SRC:.s=.o))
 
 all: $(NAME) $(TEST)
