@@ -6,7 +6,7 @@
 ;    By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/12/12 13:24:20 by ebaudet           #+#    #+#              ;
-;    Updated: 2018/12/13 14:53:01 by ebaudet          ###   ########.fr        ;
+;    Updated: 2018/12/13 15:55:06 by ebaudet          ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 %define MACH_SYSCALL(nb)	0x2000000 | nb
@@ -108,7 +108,7 @@ for1:
 	pop rcx
 	loop for1
 
-	print newline
+print newline
 
 
 ; *****			for statment for(int a=1; a < 10; a++)               ***** ;
