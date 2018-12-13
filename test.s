@@ -6,7 +6,7 @@
 ;    By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/12/12 13:24:20 by ebaudet           #+#    #+#              ;
-;    Updated: 2018/12/13 15:55:06 by ebaudet          ###   ########.fr        ;
+;    Updated: 2018/12/13 17:26:47 by ebaudet          ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 %define MACH_SYSCALL(nb)	0x2000000 | nb
@@ -88,9 +88,9 @@ _main:
 	syscall 						; invoke operating system to do the write
 
 
-	; *****			if else statment if (a>b)                     ***** ;
-	mov r12, 2
-	mov r13, 6
+; *****			if else statment if (a>b)                     ***** ;
+mov r12, 2
+mov r13, 6
 if:	cmp r12, r13
 	jng else
 	print r12sup
@@ -101,7 +101,7 @@ endif:
 
 
 ; *****			for statment for(int a=10; a>0; a−−)               ***** ;
-	mov rcx, 10
+mov rcx, 10
 for1:
 	push rcx
 	print point
@@ -123,10 +123,10 @@ test2: cmp r12, 10
 print newline
 
 ; *****			if statment ((a > b) && (c <= d))                  ***** ;
-	mov rax, 30
-	mov rbx, 1
-	mov rcx, 10
-	mov rdx, 12
+mov rax, 30
+mov rbx, 1
+mov rcx, 10
+mov rdx, 12
 if2: cmp rax, rbx
 	jng else2
 	cmp rcx, rdx
@@ -139,7 +139,7 @@ endif2:
 
 
 ; *****			switch statment                         ***** ;
-	mov rcx, 1
+mov rcx, 1
 switcha: cmp rcx, 1
 	jne casea2
 	print txtcasea1
@@ -155,7 +155,7 @@ endswitcha:
 
 
 ; *****			while statment                         ***** ;
-	mov r12, 9
+mov r12, 9
 while1: cmp r12, 0
 	jle endwhile1
 	dec r12
@@ -166,7 +166,7 @@ endwhile1:
 
 
 ; *****			do while statment                         ***** ;
-	mov r12, 9
+mov r12, 9
 do1:
 	print point
 	dec r12
