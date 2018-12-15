@@ -6,7 +6,7 @@
 #    By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/11 15:02:11 by ebaudet           #+#    #+#              #
-#    Updated: 2018/12/13 16:12:33 by ebaudet          ###   ########.fr        #
+#    Updated: 2018/12/14 18:08:29 by ebaudet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # main makefile :
@@ -15,18 +15,23 @@ CC		= gcc
 AFLAGS	= -f macho64 -g
 CFLAGS	= -Wall -Werror -Wextra
 NAME	= libfts.a
-TEST	= a.aout
+TEST	= test.out
 SRC		= main.c
 OBJ_DIR	= obj
 OBJ		= $(addprefix obj/, $(SRC:.c=.o))
-ASRC 	= ft_bzero.s ft_tolower.s ft_toupper.s ft_isascii.s ft_isalnum.s \
-		ft_isalpha.s ft_isdigit.s ft_isprint.s
-AOBJ	= $(addprefix obj/, $(SRC:.s=.o))
+ASRC 	= ft_bzero.s ft_strcat.s ft_tolower.s ft_toupper.s ft_isascii.s \
+		ft_isalnum.s ft_isalpha.s ft_isdigit.s ft_isprint.s
+AOBJ	= $(addprefix obj/, $(ASRC:.s=.o))
 
 all: $(NAME) $(TEST)
 
 $(TEST): $(OBJ) $(NAME)
 	@$(CC) -o $(TEST) $(SRC) $(NAME)
+
+$(NAME): $(AOBJ)
+	@ar -rc $(NAME) $(AOBJ)
+	@ranlib $(NAME)
+	@echo "\n> Compiling LibftASM [\033[32mDONE\033[m]"
 
 obj/%.o: %.c
 	@mkdir -p $(OBJ_DIR)
