@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 12:30:51 by ebaudet           #+#    #+#             */
-/*   Updated: 2018/12/14 18:50:10 by ebaudet          ###   ########.fr       */
+/*   Updated: 2018/12/18 00:35:51 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int		main(void)
 		printf("\033[31mERROR\033[m ft_strcat : [%s|%s]\n", string_cat, string_cat2);
 		error++;
 	} else {
-		printf("string_cat : '%s', string_cat2 : '%s'\n", string_cat, string_cat2);
+		printf("\033[32m{OK}\033[m string_cat : '%s', string_cat2 : '%s'\n", string_cat, string_cat2);
 
 	}
 
@@ -66,14 +66,14 @@ int		main(void)
 		printf("\033[31mERROR\033[m ft_strcat : [%s|%s]\n", string_cat, string_cat2);
 		error++;
 	} else {
-		printf("string_cat : '%s', string_cat2 : '%s'\n", string_cat, string_cat2);
+		printf("\033[32m{OK}\033[m string_cat : '%s', string_cat2 : '%s'\n", string_cat, string_cat2);
 
 	}
 
 	char *null_cat = NULL;
 	ft_strcat(null_cat, "test");
 	if (null_cat == NULL) {
-		printf("null_cat : '%s'\n", null_cat);
+		printf("\033[32m{OK}\033[m null_cat : '%s'\n", null_cat);
 	} else {
 		printf("\033[31mERROR\033[m ft_strcat : [%s|%s]\n", string_cat, string_cat2);
 		error++;
@@ -173,6 +173,31 @@ int		main(void)
 	if (error == 0)
 		printf("\033[32mSUCCESS\033[m ft_tolower\n");
 
+	printf("\n*********** PART 2 ***********\n");
+
+	// ======= ft_strlen ========
+	printf("\n======= ft_strlen =========\n");
+	char len[255] = "coucou les gens\0";
+	char len2[255] = "poerkwg weoiirg powejrg pweoirj gpweoirjjg poweirjg pk a\0";
+	error = 0;
+	if (ft_strlen(len) != strlen(len)) {
+		printf("\033[31mERROR\033[m ft_strlen with %s | ft_strlen:%lu | strlen:%lu\n", len, ft_strlen(len), strlen(len));
+			error++;
+	}
+	if (ft_strlen(len2) != strlen(len2)) {
+		printf("\033[31mERROR\033[m ft_strlen with %s | ft_strlen:%lu | strlen:%lu\n", len2, ft_strlen(len2), strlen(len2));
+			error++;
+	}
+	if (ft_strlen("salut les gens oaoaoa") != strlen("salut les gens oaoaoa")) {
+		printf("\033[31mERROR\033[m ft_strlen with %s | ft_strlen:%lu | strlen:%lu\n", "salut les gens oaoaoa", ft_strlen("salut les gens oaoaoa"), strlen("salut les gens oaoaoa"));
+			error++;
+	}
+	if (ft_strlen("") != strlen("")) {
+		printf("\033[31mERROR\033[m ft_strlen with %s | ft_strlen:%lu | strlen:%lu\n", "", ft_strlen(""), strlen(""));
+			error++;
+	}
+	if (error == 0)
+		printf("\033[32mSUCCESS\033[m ft_strlen\n");
 
 	// int i = -1;
 	// while (tabint[++i] != 0)
