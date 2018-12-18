@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 12:30:51 by ebaudet           #+#    #+#             */
-/*   Updated: 2018/12/18 01:06:00 by ebaudet          ###   ########.fr       */
+/*   Updated: 2018/12/18 02:30:43 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ int		main(void)
 	// char tabchar[53] = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM\0";
 	// char tabspecial[26] = "!@#$%^&*()_+{}|[];:,./<>?\0";
 	int error;
+
+
+	// ******************************
+	// *********** PART 1 ***********
+	// ******************************
 	printf("\n*********** PART 1 ***********\n");
 
 	// ======= ft_bzero ========
@@ -174,7 +179,20 @@ int		main(void)
 	if (error == 0)
 		printf("\033[32mSUCCESS\033[m ft_tolower\n");
 
+
+	// ======= ft_puts ========
+
+	ft_puts("coucou\n");
+	ft_puts("salrweoijr oweij pqwoeijr qpwoiei rpqvwjiejn fewirgn welirjfncq pwoeifij pqoi%^&*()9876545^&*()987654%^&898765^789876\n");
+	ft_puts("\033[32mSUCCESS\033[m ft_puts\n");
+
+
+	// ******************************
+	// *********** PART 2 ***********
+	// ******************************
 	printf("\n*********** PART 2 ***********\n");
+
+
 
 	// ======= ft_strlen ========
 	printf("\n======= ft_strlen =========\n");
@@ -199,6 +217,24 @@ int		main(void)
 	}
 	if (error == 0)
 		printf("\033[32mSUCCESS\033[m ft_strlen\n");
+
+	// ======= ft_memset ========
+	printf("\n======= ft_memset =========\n");
+	error = 0;
+	char memset1[27] = "qwertyuiopasdfghjklzxcvbnm\0";
+	char memset2[27] = "qwertyuiopasdfghjklzxcvbnm\0";
+
+	ft_memset(memset1,'a', 5);
+	memset(memset2,'a', 5);
+	for (int i = 0; i < 27; i++) {
+		if (memset1[i] != memset2[i]) {
+			printf("\033[31mERROR\033[m memset with caract %d[%d|%d] \n", i, memset1[i], memset2[i]);
+			error++;
+		}
+	}
+	if (error == 0)
+		printf("\033[32mSUCCESS\033[m ft_memset\n");
+
 
 	// int i = -1;
 	// while (tabint[++i] != 0)

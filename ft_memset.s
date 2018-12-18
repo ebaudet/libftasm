@@ -6,7 +6,7 @@
 ;    By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/12/11 16:04:09 by ebaudet           #+#    #+#              ;
-;    Updated: 2018/12/11 17:52:47 by ebaudet          ###   ########.fr        ;
+;    Updated: 2018/12/18 04:58:32 by ebaudet          ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 section .text
@@ -14,9 +14,9 @@ section .text
 
 _ft_memset:
 	push rdi
+	cld
 	mov rcx, rdx
 	mov rax, rsi
-	cld
 	rep stosb
 	pop rax
 	ret

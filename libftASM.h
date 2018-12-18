@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 12:33:31 by ebaudet           #+#    #+#             */
-/*   Updated: 2018/12/14 14:51:22 by ebaudet          ###   ########.fr       */
+/*   Updated: 2018/12/18 01:36:46 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
-int		puts(const char *s);
+int		ft_puts(const char *s);
 
 /*
 ** functions part 2
