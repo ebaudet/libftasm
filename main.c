@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 12:30:51 by ebaudet           #+#    #+#             */
-/*   Updated: 2018/12/18 00:35:51 by ebaudet          ###   ########.fr       */
+/*   Updated: 2018/12/18 01:06:00 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,16 @@ int		main(void)
 
 	}
 
-	char *null_cat = NULL;
-	ft_strcat(null_cat, "test");
-	if (null_cat == NULL) {
-		printf("\033[32m{OK}\033[m null_cat : '%s'\n", null_cat);
-	} else {
-		printf("\033[31mERROR\033[m ft_strcat : [%s|%s]\n", string_cat, string_cat2);
-		error++;
-	}
-
+	// for null pointer, strcat provoc a segmentation fault :
+	//
+	// char *null_cat = NULL;
+	// ft_strcat(null_cat, "test");
+	// if (null_cat == NULL) {
+	// 	printf("\033[32m{OK}\033[m null_cat : '%s'\n", null_cat);
+	// } else {
+	// 	printf("\033[31mERROR\033[m ft_strcat : [%s|%s]\n", string_cat, string_cat2);
+	// 	error++;
+	// }
 	// char *null_cat2 = NULL;
 	// strcat(null_cat2, "test");
 	// if (strcmp(string_cat, string_cat2) != 0) {

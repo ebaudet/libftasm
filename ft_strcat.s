@@ -6,17 +6,13 @@
 ;    By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/12/14 12:25:26 by ebaudet           #+#    #+#              ;
-;    Updated: 2018/12/14 18:33:22 by ebaudet          ###   ########.fr        ;
+;    Updated: 2018/12/18 00:40:26 by ebaudet          ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 segment .text
 	global _ft_strcat
 
 _ft_strcat:
-	cmp rdi, 0
-	jle end
-	cmp rsi, 0
-	jle end
 	mov r12, rdi
 	mov r13, rsi
 	mov r14, 0
