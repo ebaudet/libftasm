@@ -6,7 +6,7 @@
 #    By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/11 15:02:11 by ebaudet           #+#    #+#              #
-#    Updated: 2018/12/18 21:49:31 by ebaudet          ###   ########.fr        #
+#    Updated: 2018/12/18 22:40:05 by ebaudet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # main makefile :
@@ -21,7 +21,7 @@ OBJ_DIR	= obj
 OBJ		= $(addprefix obj/, $(SRC:.c=.o))
 ASRC 	= ft_bzero.s ft_strcat.s ft_tolower.s ft_toupper.s ft_isascii.s \
 		ft_isalnum.s ft_isalpha.s ft_isdigit.s ft_isprint.s ft_puts.s \
-		ft_strlen.s ft_memset.s ft_memcpy.s ft_strdup.s
+		ft_strlen.s ft_memset.s ft_memcpy.s ft_strdup.s ft_cat.s
 AOBJ	= $(addprefix obj/, $(ASRC:.s=.o))
 
 all: $(NAME) $(TEST)
