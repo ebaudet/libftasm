@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/22 14:43:06 by student@42        #+#    #+#             */
-/*   Updated: 2018/12/18 15:59:31 by ebaudet          ###   ########.fr       */
+/*   Updated: 2018/12/18 17:02:44 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,8 +161,8 @@ int					main(void)
 // 	D_ADD_HCTEST(memcmp);
 #define	D_STRLEN
 	D_ADD_TEST(strlen);
-// #define	D_STRDUP
-// 	D_ADD_TEST(strdup);
+#define	D_STRDUP
+	D_ADD_TEST(strdup);
 // #define	D_STRCPY
 // 	D_ADD_HCTEST(strcpy);
 // #define	D_STRNCPY
@@ -1562,6 +1562,8 @@ int				uf_test_strdup(void)
 
 	ret1 = strdup("");
 	ret2 = ft_strdup("");
+	if (ret2 == 0)
+		D_ERROR
 	if (strcmp(ret1, ret2) != 0)
 		D_ERROR
 	free(ret1);

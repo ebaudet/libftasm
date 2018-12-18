@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 12:30:51 by ebaudet           #+#    #+#             */
-/*   Updated: 2018/12/18 16:21:22 by ebaudet          ###   ########.fr       */
+/*   Updated: 2018/12/18 22:36:45 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -260,31 +260,30 @@ int		main(void)
 	if (error == 0)
 		printf("\033[32mSUCCESS\033[m ft_memcpy\n");
 
+	// ======= ft_strdup ========
+	printf("\n======= ft_strdup =========\n");
+	error = 0;
+	char strinit[12] = "Hello Wolrd\0";
+	char *strcpy;
+	char *strcpy2;
+	strcpy = ft_strdup(strinit);
+	strcpy2 = strdup(strinit);
+	for (int i = 0; i < 12; i++) {
+		if (strcpy[i] != strcpy2[i]) {
+			printf("\033[31mERROR\033[m strdup origin with caract %d[%d|%d] \n", i, strcpy[i], strcpy2[i]);
+			error++;
+		}
+	}
 
-	// int i = -1;
-	// while (tabint[++i] != 0)
-	// {
-	// 	if (!ft_isdigit(tabint[i]))
-	// 		printf("%c is not a digit\n", tabint[i]);
-	// 	else
-	// 		printf("%c is a digit\n", tabint[i]);
-	// }
-	// i = -1;
-	// while (tabchar[++i] != 0)
-	// {
-	// 	if (!ft_isdigit(tabchar[i]))
-	// 		printf("%c is not a digit\n", tabchar[i]);
-	// 	else
-	// 		printf("%c is a digit\n", tabchar[i]);
-	// }
-	// i = -1;
-	// while (tabspecial[++i] != 0)
-	// {
-	// 	if (!ft_isdigit(tabspecial[i]))
-	// 		printf("%c is not a digit\n", tabspecial[i]);
-	// 	else
-	// 		printf("%c is a digit\n", tabspecial[i]);
-	// }
+	if (error == 0)
+		printf("\033[32mSUCCESS\033[m ft_strdup\n");
+
+
+	// ******************************
+	// *********** PART 3 ***********
+	// ******************************
+	printf("\n*********** PART 3 ***********\n");
+
 
 	return 0;
 }
