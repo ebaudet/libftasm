@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/22 14:43:06 by student@42        #+#    #+#             */
-/*   Updated: 2018/12/18 01:41:40 by ebaudet          ###   ########.fr       */
+/*   Updated: 2018/12/18 15:59:31 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,8 +149,8 @@ int					main(void)
 	D_ADD_HCTEST(memset);
 #define	D_BZERO
 	D_ADD_HCTEST(bzero);
-// #define	D_MEMCPY
-// 	D_ADD_HCTEST(memcpy);
+#define	D_MEMCPY
+	D_ADD_HCTEST(memcpy);
 // #define	D_MEMCCPY
 // 	D_ADD_HCTEST(memccpy);
 // #define	D_MEMMOVE

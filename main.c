@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 12:30:51 by ebaudet           #+#    #+#             */
-/*   Updated: 2018/12/18 02:30:43 by ebaudet          ###   ########.fr       */
+/*   Updated: 2018/12/18 16:21:22 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,7 @@ int		main(void)
 
 
 	// ======= ft_puts ========
+	printf("\n======= ft_puts =========\n");
 
 	ft_puts("coucou\n");
 	ft_puts("salrweoijr oweij pqwoeijr qpwoiei rpqvwjiejn fewirgn welirjfncq pwoeifij pqoi%^&*()9876545^&*()987654%^&898765^789876\n");
@@ -234,6 +235,30 @@ int		main(void)
 	}
 	if (error == 0)
 		printf("\033[32mSUCCESS\033[m ft_memset\n");
+
+	// ======= ft_memcpy ========
+	printf("\n======= ft_memcpy =========\n");
+	error = 0;
+	char memcpy1[27] = "qwertyuiopasdfghjklzxcvbnm\0";
+	char memcpy2[27] = "lkjhgfdsapoiuytrewqmnbvcx\0";
+	char memcpy3[27] = "qwertyuiopasdfghjklzxcvbnm\0";
+	char memcpy4[27] = "lkjhgfdsapoiuytrewqmnbvcx\0";
+	printf("[BEFORE] : memcpy1: '%s'\nmemcpy2: '%s'\nmemcpy3: '%s'\nmemcpy4: '%s'\n", memcpy1, memcpy2, memcpy3, memcpy4);
+	ft_memcpy(memcpy1,memcpy2, 9);
+	memcpy(memcpy3,memcpy4, 9);
+	printf("[AFTER] : memcpy1: '%s'\nmemcpy2: '%s'\nmemcpy3: '%s'\nmemcpy4: '%s'\n", memcpy1, memcpy2, memcpy3, memcpy4);
+	for (int i = 0; i < 27; i++) {
+		if (memcpy1[i] != memcpy3[i]) {
+			printf("\033[31mERROR\033[m memcpy origin with caract %d[%d|%d] \n", i, memcpy2[i], memcpy4[i]);
+			error++;
+		}
+		if (memcpy2[i] != memcpy4[i]) {
+			printf("\033[31mERROR\033[m memcpy copy with caract %d[%d|%d] \n", i, memcpy2[i], memcpy4[i]);
+			error++;
+		}
+	}
+	if (error == 0)
+		printf("\033[32mSUCCESS\033[m ft_memcpy\n");
 
 
 	// int i = -1;
