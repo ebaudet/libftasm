@@ -6,7 +6,7 @@
 #    By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/11 15:02:11 by ebaudet           #+#    #+#              #
-#    Updated: 2018/12/19 17:39:47 by ebaudet          ###   ########.fr        #
+#    Updated: 2018/12/21 13:44:22 by ebaudet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # main makefile :
@@ -35,13 +35,13 @@ $(NAME): $(AOBJ)
 	@ranlib $(NAME)
 	@echo "\n> Compiling LibftASM [\033[32mDONE\033[m]"
 
-obj/%.o: src%.c
+obj/%.o: %.c
 	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -c $^ -o $@ -I .
+	@$(CC) $(CFLAGS) -c $^ -o $@  $(INC)
 
 obj/%.o: src/%.s
 	@mkdir -p $(OBJ_DIR)
-	@$(AC) $(AFLAGS) -o $@ $^ -I .
+	@$(AC) $(AFLAGS) -o $@ $^  $(INC)
 	@echo -n .
 
 clean:
