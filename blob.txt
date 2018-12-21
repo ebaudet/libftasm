@@ -1,0 +1,3 @@
+coucou je suis le fichier BLOB.
+
+Et j'affiche du contenu.

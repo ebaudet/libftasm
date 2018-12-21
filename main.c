@@ -6,13 +6,14 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 12:30:51 by ebaudet           #+#    #+#             */
-/*   Updated: 2018/12/18 22:36:45 by ebaudet          ###   ########.fr       */
+/*   Updated: 2018/12/21 21:01:27 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftASM.h"
 #include <stdio.h>
 #include <ctype.h>
+#include <fcntl.h>
 
 int		main(void)
 {
@@ -284,6 +285,9 @@ int		main(void)
 	// ******************************
 	printf("\n*********** PART 3 ***********\n");
 
+	printf("\n======= ft_cat =========\n");
+	int fd = open("blob.txt", O_RDONLY);
+	ft_cat(fd);
 
 	return 0;
 }
