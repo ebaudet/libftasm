@@ -11,7 +11,7 @@ Linux:
 ### II - Test library functions
 ```
 bash Usage
-(equivalent to 'make test & ./maintest.aout')
+(equivalent to 'make & ./test.out')
 ```
 
 ### III - Use lldb (debugger) to read registers
@@ -249,7 +249,7 @@ Please read very interesting PDFs in the resources folder of this git
 
 ## 0x06 - Debugging
 ```
-lldb maintest.out
+lldb test.out
 disas -n loop
 break memoryaddress
 run
