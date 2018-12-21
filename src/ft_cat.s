@@ -6,7 +6,7 @@
 ;    By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/12/18 22:38:59 by ebaudet           #+#    #+#              ;
-;    Updated: 2018/12/21 21:09:51 by ebaudet          ###   ########.fr        ;
+;    Updated: 2018/12/21 23:45:25 by ebaudet          ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -19,41 +19,32 @@
 ; read(int fd, user_addr_t cbuf, user_size_t nbyte)
 ; write(int fd, user_addr_t cbuf, user_size_t nbyte)
 
-section .text
-	global _ft_cat
-
 section .data
 buffer:
 	.buf db BUFF_SIZE
-	.len equ $ - buffer.buf
+
+section .text
+	global _ft_cat
 
 _ft_cat:
-	push rbp
-	mov rbp, rsp
 read:
 	lea rsi, [rel buffer.buf]
 	mov rdx, BUFF_SIZE
 	mov rax, MACH_SYSCALL(READ)
 	syscall
-	jc end_error ; if carry flag is set to error
+	jc end ; if carry flag is set to error
 	test rax, rax
 	jz end
 write:
+	push rdi
 	mov rdi, STDOUT
-	lea rsi, [rel buffer.buf]
 	mov rdx, rax
 	mov rax, MACH_SYSCALL(WRITE)
 	syscall
+	pop rdi
 	jmp read
 end:
-	mov rsp, rbp
-	pop rbp
 	xor rax, rax
-	ret
-end_error:
-	mov rsp, rbp
-	pop rbp
-	mov rax, -1
 	ret
 
 ; Ordre des arguments d'une fonction

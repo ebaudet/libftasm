@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 12:30:51 by ebaudet           #+#    #+#             */
-/*   Updated: 2018/12/21 21:01:27 by ebaudet          ###   ########.fr       */
+/*   Updated: 2018/12/21 23:44:31 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -288,6 +288,7 @@ int		main(void)
 	printf("\n======= ft_cat =========\n");
 	int fd = open("blob.txt", O_RDONLY);
 	ft_cat(fd);
+	printf("\n======= fin ft_cat =========\n");
 
 	return 0;
 }
