@@ -245,6 +245,7 @@ Please read very interesting PDFs in the resources folder of this git
 * Try out the [Compiler explorer](https://godbolt.org/)
 * Agner's [Optimization](http://agner.org/optimize/)
 * About [loops](https://stackoverflow.com/questions/47783926/why-are-loops-always-compiled-like-this)
+* [cheatsheet ASM](https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf)
 
 
 ## 0x06 - Debugging
