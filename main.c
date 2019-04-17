@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 12:30:51 by ebaudet           #+#    #+#             */
-/*   Updated: 2018/12/21 23:44:31 by ebaudet          ###   ########.fr       */
+/*   Updated: 2019/04/17 18:52:52 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,8 +186,18 @@ int		main(void)
 
 	ft_puts("coucou\n");
 	ft_puts("salrweoijr oweij pqwoeijr qpwoiei rpqvwjiejn fewirgn welirjfncq pwoeifij pqoi%^&*()9876545^&*()987654%^&898765^789876\n");
-	ft_puts("\033[32mSUCCESS\033[m ft_puts\n");
+	puts("ft_puts:\"");
+	ft_puts("");
+	puts("\", puts:\"");
+	puts("");
+	puts("\"\n");
 
+	puts("ft_puts:\"");
+	ft_puts(NULL);
+	puts("\", puts:\"");
+	puts(NULL);
+	puts("\"\n");
+	ft_puts("\033[32mSUCCESS\033[m ft_puts\n");
 
 	// ******************************
 	// *********** PART 2 ***********
