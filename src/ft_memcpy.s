@@ -6,7 +6,7 @@
 ;    By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/12/13 14:29:47 by ebaudet           #+#    #+#              ;
-;    Updated: 2018/12/18 18:07:15 by ebaudet          ###   ########.fr        ;
+;    Updated: 2019/10/03 15:47:50 by ebaudet          ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 section .text
@@ -15,7 +15,7 @@ section .text
 
 
 _ft_memcpy:
-	push rdi
+	push rdi ;
 	mov rcx, rdx
 	cld
 	rep movsb

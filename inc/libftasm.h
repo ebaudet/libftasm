@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftASM.h                                         :+:      :+:    :+:   */
+/*   libftasm.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 12:33:31 by ebaudet           #+#    #+#             */
-/*   Updated: 2018/12/18 18:07:09 by ebaudet          ###   ########.fr       */
+/*   Updated: 2019/10/03 15:52:06 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ size_t	ft_strlen(const char *s);
 void	*ft_memset(void *b, int c, size_t len);
 void	*ft_memcpy(void *s1, void const *s2, size_t n);
 char	*ft_strdup(const char *s1);
-
 
 /*
 ** function part 3
