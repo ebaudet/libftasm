@@ -6,7 +6,7 @@
 ;    By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/12/13 14:29:53 by ebaudet           #+#    #+#              ;
-;    Updated: 2018/12/18 22:33:36 by ebaudet          ###   ########.fr        ;
+;    Updated: 2019/10/03 17:12:43 by ebaudet          ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 section .text
@@ -44,6 +44,7 @@ error:
 	ret
 
 
+; char	*ft_strdup(const char *s1);
 ; Ordre des arguments d'une fonction
 ; %rdi, %rsi, %rdx, %rcx, %r8 and %r9
 ; retour d'une fonction

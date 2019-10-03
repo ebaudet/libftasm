@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 12:30:51 by ebaudet           #+#    #+#             */
-/*   Updated: 2019/10/03 15:49:28 by ebaudet          ###   ########.fr       */
+/*   Updated: 2019/10/03 16:51:16 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -252,19 +252,19 @@ int		main(void)
 	error = 0;
 	char memcpy1[27] = "qwertyuiopasdfghjklzxcvbnm\0";
 	char memcpy2[27] = "lkjhgfdsapoiuytrewqmnbvcx\0";
-	char memcpy3[27] = "qwertyuiopasdfghjklzxcvbnm\0";
-	char memcpy4[27] = "lkjhgfdsapoiuytrewqmnbvcx\0";
-	printf("[BEFORE] : memcpy1: '%s'\nmemcpy2: '%s'\nmemcpy3: '%s'\nmemcpy4: '%s'\n", memcpy1, memcpy2, memcpy3, memcpy4);
+	char ft_memcpy1[27] = "qwertyuiopasdfghjklzxcvbnm\0";
+	char ft_memcpy2[27] = "lkjhgfdsapoiuytrewqmnbvcx\0";
+	printf("[BEFORE] : memcpy1: '%s'\nmemcpy2: '%s'\nft_memcpy1: '%s'\nft_memcpy2: '%s'\n", memcpy1, memcpy2, ft_memcpy1, ft_memcpy2);
 	ft_memcpy(memcpy1,memcpy2, 9);
-	memcpy(memcpy3,memcpy4, 9);
-	printf("[AFTER] : memcpy1: '%s'\nmemcpy2: '%s'\nmemcpy3: '%s'\nmemcpy4: '%s'\n", memcpy1, memcpy2, memcpy3, memcpy4);
+	memcpy(ft_memcpy1,ft_memcpy2, 9);
+	printf("[AFTER] : memcpy1: '%s'\nmemcpy2: '%s'\nft_memcpy1: '%s'\nft_memcpy2: '%s'\n", memcpy1, memcpy2, ft_memcpy1, ft_memcpy2);
 	for (int i = 0; i < 27; i++) {
-		if (memcpy1[i] != memcpy3[i]) {
-			printf("\033[31mERROR\033[m memcpy origin with caract %d[%d|%d] \n", i, memcpy2[i], memcpy4[i]);
+		if (memcpy1[i] != ft_memcpy1[i]) {
+			printf("\033[31mERROR\033[m memcpy origin with caract %d[%d|%d] \n", i, memcpy2[i], ft_memcpy2[i]);
 			error++;
 		}
-		if (memcpy2[i] != memcpy4[i]) {
-			printf("\033[31mERROR\033[m memcpy copy with caract %d[%d|%d] \n", i, memcpy2[i], memcpy4[i]);
+		if (memcpy2[i] != ft_memcpy2[i]) {
+			printf("\033[31mERROR\033[m memcpy copy with caract %d[%d|%d] \n", i, memcpy2[i], ft_memcpy2[i]);
 			error++;
 		}
 	}

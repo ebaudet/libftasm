@@ -6,23 +6,26 @@
 ;    By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/12/11 16:04:09 by ebaudet           #+#    #+#              ;
-;    Updated: 2019/04/17 18:43:43 by ebaudet          ###   ########.fr        ;
+;    Updated: 2019/10/03 17:12:11 by ebaudet          ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 section .text
 	global _ft_memset
 
 _ft_memset:
-	push rdi
-	cld
-	mov rcx, rdx
-	mov rax, rsi
-	cld
-	rep stosb
+	push rdi     ; push RDI (1st arg) on stack to save it.
+	mov rcx, rdx ; move RDX in RCX (counter register)
+	mov rax, rsi ; move RSI in RAX (return register)
+	cld          ; clear DF flag. When the DF flag is set to 0, string
+	             ; operations increment the index registers (RSI and/or RDI).
+	rep stosb    ; store RAX at address RDI (1st arg) RCX times. Each times, RDI
+	             ; is increased cause of DF=0.
 end:
-	pop rax
-	ret
+	pop rax      ; pop the last stack (old RDI) on RAX (return value)
+	ret          ; return
 
+
+; void	*ft_memset(void *b, int c, size_t len);
 ; Ordre des arguments d'une fonction
 ; %rdi, %rsi, %rdx, %rcx, %r8 and %r9
 ; retour d'une fonction

@@ -6,7 +6,7 @@
 ;    By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/12/13 14:29:47 by ebaudet           #+#    #+#              ;
-;    Updated: 2019/10/03 15:47:50 by ebaudet          ###   ########.fr        ;
+;    Updated: 2019/10/03 17:10:46 by ebaudet          ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 section .text
@@ -15,17 +15,21 @@ section .text
 
 
 _ft_memcpy:
-	push rdi ;
-	mov rcx, rdx
-	cld
-	rep movsb
+	push rdi     ; push RDI (1st arg) on stack
+	mov rcx, rdx ; move rdx in counter register
+	cld          ; clear DF flag. When the DF flag is set to 0, string
+	             ; operations increment the index registers (RSI and/or RDI).
+	rep movsb    ; move byte at address RSI (2nd arg) to address RDI (1st arg)
+	             ; RCX times. Each times, RSI and RDI are increased cause of DF.
 end:
-	pop rax
-	ret
+	pop rax      ; pop the last stack (old RDI) on RAX (return value)
+	ret          ; return
 
-; Ordre des arguments d'une fonction
+
+; void	*ft_memcpy(void *s1, void const *s2, size_t n);
+; Arguments order in a function :
 ; %rdi, %rsi, %rdx, %rcx, %r8 and %r9
-; retour d'une fonction
+; Return value :
 ; %rax
 
 ; The MOVS instruction moves the string element addressed by the ESI
