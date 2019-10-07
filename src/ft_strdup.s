@@ -6,7 +6,7 @@
 ;    By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/12/13 14:29:53 by ebaudet           #+#    #+#              ;
-;    Updated: 2019/10/03 17:12:43 by ebaudet          ###   ########.fr        ;
+;    Updated: 2019/10/07 18:05:01 by ebaudet          ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 section .text
@@ -16,8 +16,8 @@ section .text
 	extern _ft_memcpy
 
 _ft_strdup:
-	cmp		rdi, 0
-	je		error
+	test	rdi, rdi
+	jz		error
 	xor		rax, rax
 
 	push	rdi 			; save source in stack
@@ -45,7 +45,7 @@ error:
 
 
 ; char	*ft_strdup(const char *s1);
-; Ordre des arguments d'une fonction
+; Arguments order in a function :
 ; %rdi, %rsi, %rdx, %rcx, %r8 and %r9
-; retour d'une fonction
+; Return value :
 ; %rax
