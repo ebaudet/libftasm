@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 12:30:51 by ebaudet           #+#    #+#             */
-/*   Updated: 2019/10/03 16:51:16 by ebaudet          ###   ########.fr       */
+/*   Updated: 2019/10/10 12:26:31 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int		main(void)
 			error++;
 		}
 	}
+	ft_bzero(NULL,0);
 	if (error == 0)
 		printf("\033[32mSUCCESS\033[m ft_bzero\n");
 
@@ -50,14 +51,31 @@ int		main(void)
 
 
 	error = 0;
-	char string_cat[20];
-	bzero(string_cat, 20);
+	// char string_cat[30];
+	char string_cat[22] = "\0n1234567890123456789";
+	// bzero(string_cat, 20);
+	// char big_string[2000000];
+	// bzero(big_string, 2000000);
 
-	char string_cat2[20];
-	bzero(string_cat2, 20);
+	char string_cat2[22] = "\0n1234567890123456789";
+	// bzero(string_cat2, 20);
+	// char big_string2[2000000];
+	// bzero(big_string2, 2000000);
 
-	ft_strcat(string_cat, "test");
-	strcat(string_cat2, "test");
+	ft_strcat(string_cat, "t\0test");
+	strcat(string_cat2, "t\0test");
+	// int i = 0;
+	// while (++i < 200000)
+	// {
+		// ft_strcat(big_string, "test jhfkhw abdfk jabhsd kfjabsdkfjabskdjfb askjdbf askjhdbf ksajhdbf ksajhdbf kjashdbf kjashdbf\n");
+		// strcat(big_string2, "test jhfkhw abdfk jabhsd kfjabsdkfjabskdjfb askjdbf askjhdbf ksajhdbf ksajhdbf kjashdbf kjashdbf\n");
+		// ft_strcat(big_string, "test");
+		// strcat(big_string2, "test");
+		// if (strcmp(big_string, big_string2) != 0) {
+			// printf("\033[31mERROR\033[m ft_strcat : [%s|%s]\n", big_string2, big_string2);
+			// error++;
+		// }
+	// }
 	if (strcmp(string_cat, string_cat2) != 0) {
 		printf("\033[31mERROR\033[m ft_strcat : [%s|%s]\n", string_cat, string_cat2);
 		error++;
@@ -183,6 +201,10 @@ int		main(void)
 
 	// ======= ft_puts ========
 	printf("\n======= ft_puts =========\n");
+
+	puts("ici puts, puis ft_puts");
+	puts("ici puts, puis ft_puts");
+	ft_puts("ici ft_puts, avant puts\n");
 
 	ft_puts("coucou\n");
 	ft_puts("salrweoijr oweij pqwoeijr qpwoiei rpqvwjiejn fewirgn welirjfncq pwoeifij pqoi%^&*()9876545^&*()987654%^&898765^789876\n");

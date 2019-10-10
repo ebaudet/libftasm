@@ -6,13 +6,14 @@
 ;    By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/12/13 14:29:42 by ebaudet           #+#    #+#              ;
-;    Updated: 2019/10/08 16:53:50 by ebaudet          ###   ########.fr        ;
+;    Updated: 2019/10/10 12:23:41 by ebaudet          ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 section .text
 	global _ft_strlen
 
 _ft_strlen:
+	push rdi              ; save RDI
 	push r12              ; save R12
 	push rcx              ; save RCX (counter)
 	mov r12, rdi          ; save old pointer value (s)
@@ -26,6 +27,7 @@ _ft_strlen:
 	mov rax, rdi          ; and return it in RAX
 	pop rcx               ; save RCX
 	pop r12               ; pop R12
+	pop rdi               ; pop RDI
 	ret                   ; return
 
 

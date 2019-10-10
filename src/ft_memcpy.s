@@ -12,8 +12,6 @@
 section .text
 	global _ft_memcpy
 
-
-
 _ft_memcpy:
 	push rdi     ; push RDI (1st arg) on stack
 	mov rcx, rdx ; move rdx in counter register
