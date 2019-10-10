@@ -16,7 +16,7 @@ bash Usage
 
 ### III - Use lldb (debugger) to read registers
 lldb
-```
+```bash
 ~/.lldbinit
 settings set target.x86-disassembly-flavor intel
 lldb a.out
@@ -30,7 +30,7 @@ register read rflags
 ```
 
 gdb
-```
+```bash
 info registers
 info registers eax
 ```
@@ -44,31 +44,50 @@ Arguments passed to the function are the following: 1st: rdi , 2nd: rsi, 3rd: rd
 
 #### A - Caller-save registers (eax, ecx, edx)
 Caller-saved registers (AKA volatile registers) are used to hold temporary quantities that need not be preserved across calls. For that reason, it is the caller's responsibility to push these registers onto the stack if it wants to restore this value after a procedure call.
-```
-EAX: Stores function return values
-ECX: Counter for string and loop operation
-EDX: I/O Pointer
-EIP: Instruction pointer (Pointer to the next instruction to be executed)
-```
+
+| Register | Description |
+| :-----: | :-: |
+| EAX | Stores function return values |
+| ECX | Counter for string and loop operation |
+| EDX | I/O Pointer |
+| EIP | Instruction pointer (Pointer to the next instruction to be executed) |
+
 
 #### B - Callee-save registers (ebp, ebx, esi, edi)
 Callee-saved registers (AKA non-volatile registers) are used to hold long-lived values that should be preserved across calls. When the caller makes a procedure call, it can expect that those registers will hold the same value after the callee returns, making it the responsibility of the callee to save them and restore them before returning to the caller.
-```
-EBX: Base pointer to the data section
-EDI: Source pointer for string operations
-ESI: Destination pointer for string operations
-ESP: Stack pointer
-EBP: Stack frame base pointer (local variables in the function)
-```
 
-#### C - EFLAGS register
+| Register | Description |
+| :-----: | :-: |
+| EBX | Base pointer to the data section (in DS segment) |
+| EDI | Source pointer for string operations |
+| ESI | Pointer to data in the sement pointed by the DS register; Destination pointer for string operations. |
+| ESP | Stack pointer (in the SS Segment) |
+| EBP | Stack frame base pointer (local variables in the function) (in the SS Segment) |
+
+
+#### C - 16-Bit Segment Registers
+
+| Register | Description |
+| :-----: | :-: |
+| CS | Code Segment |
+| DS | Data Segment |
+| SS | Stack Segment |
+| ES | Data Segment |
+| FS | Data Segment |
+| GS | Data Segment |
+
+
+#### D - EFLAGS register
 https://en.wikipedia.org/wiki/FLAGS_register
 
 | Bit | Label  | Description  |
 | :-----: | :-: | :-: |
-| 0 | CF | Carry Flag: Set by arithmetic instructions which generate either a carry or borrow. Set when an
+| 0 | CF | Carry Flag: Set by arithmetic instructions which generate either a carry or borrow. Set when an |
+| 1 | | Reserved, always 1 in EFLAGS |
 | 2 | PF | Parity Flag: Set by most CPU instructions if the least significant (aka the low-order bits) of the destination operand contain an even number of 1's. Not used much anymore |
+| 3 | | Reserved |
 | 4 | AF | Auxiliary Carry Flag: Set if there is a carry or borrow involving bit 4 of EAX. Set when a CPU instruction generates a carry to or a borrow from the low-order 4 bits of an operand. This flag is used for binary coded decimal (BCD) arithmetic. |
+| 5 | | Reserved |
 | 6 | ZF | Zero Flag: Set by most instructions if the result an operation is binary zero. |
 | 7 | SF | Sign Flag: Most operations set this bit the same as the most significant bit (MSB) (aka high-order bit) of the result. 0 is positive, 1 is negative. id est: 0xFFFFFFFE is -2, 0xFFFFFFFF is -1 and 0x00000001 is 1. |
 | 8 | TF | Trap Flag: (sometimes named a Trace Flag.) Permits single stepping of programs. After executing a single instruction, the processor generates an internal exception 1. When Trap Flag is set by a program, the processor generates a single-step interrupt after each instruction. A debugging program can use this feature to execute a program one instruction at a time. |
@@ -77,9 +96,10 @@ https://en.wikipedia.org/wiki/FLAGS_register
 | 11 | OF | Overflow Flag: Most arithmetic instructions set this bit, indicating that the result was too large to fit in the destination. When set, it indicates that the result of an operation is too large or too small to fit in the destination operand. |
 | 12-13 | IOPL | Input/Output privilege level flags: Used in protected mode to generate four levels of security. |
 | 14 | NT | Nested Task Flag: Used in protected mode. When set, it indicates that one system task has invoked another via a CALL Instruction, rather than a JMP. |
+| 15 |  | Reserved |
 | 16 | RF | Resume Flag: Used by the debug registers DR6 and DR7. It enables you to turn off certain exceptions while debugging code. |
 
-#### D - Bigger registers
+#### E - Bigger registers
 ```
 Registers for long double (12 octets) : xmm8 xmm9 xmm10 xmm11
 ```
@@ -89,7 +109,7 @@ Registers for long double (12 octets) : xmm8 xmm9 xmm10 xmm11
 
 Writing a lib in x86 assembly (intel flavour)
 
-```js
+```nasm
 ;//APP (Asm Pre Processor) macros
 %define MACH_SYSCALL(n)    0x2000000 | n
 %define WRITE              4
@@ -132,8 +152,8 @@ _main:
 
 **Some registers values are preserved across function calls !**
 
-|**Preserved Registers**|```rbx```| ```rsp```| ```rbp```| ```r12```| ```r13```| ```r14```| ```r15```|
-|-|-|-|-|-|-|-|-|-|-|
+| **Preserved Registers** | ```rbx``` | ```rsp``` | ```rbp``` | ```r12``` | ```r13``` | ```r14``` | ```r15``` |
+
 | **Scratch Registers** | ```rax```| ```rdi```| ```rsi```| ```rdx```| ```rcx```| ```r8```| ```r9```| ```r10```| ```r11```|
 
 
@@ -163,7 +183,7 @@ instruction destination_operand, source_operand, last_operand
 
 There are times when we need to assist assembler in translating references to data in memory. When the instruction has no reference to operand size one must use a pointer directive.
 
-```js
+```nasm
 mov     BYTE  [ al], 42  ; Store 8-bit   (1 byte)  value
 mov     WORD  [ ax], 42  ; Store 16-bit  (2 bytes) value
 mov     DWORD [eax], 42  ; Store 32-bit  (4 bytes) value
@@ -214,20 +234,20 @@ The push instruction automatically decrements ESP, the stack pointer, by 4.</br>
 CALL: It transfers control to a different function in a way that control can later be resumed where it left off. First it pushes the address of the next instruction onto the stack for use by RET when the function is done.</br>
 RET: It pops the top of the stack into EIP register.</br>
 MOV: Assign a value from a register, memory or immediate to a register or memory. It can't from memory to memory.</br>
-```
-mov eax, ecx    ; move the value contained in ECX register to EAX, i,e : eax = ecx
+```nasm
+mov eax, ecx   ; move the value contained in ECX register to EAX, i,e : eax = ecx
 ```
 MOVZX: move a value to bigger container and fill it will the value and 0 for the remaining bits.
-```
-movzx eax, al   ; move al to eax and fill it with 0
+```nasm
+movzx eax, al  ; move al to eax and fill it with 0
 ```
 LEA: Copy memory address
-```
-lea rax, [rsi]  ; copy memory address from rsi to rax;
+```nasm
+lea rax, [rsi] ; copy memory address from rsi to rax;
 ```
 TEST: is basically an AND instruction that does not alter the dest.
-```
-test edx, edx is faster than cmp edx 0, it sets the zero flag to 1 if edx is null, else to 0
+```nasm
+test edx, edx  ; is faster than cmp edx 0, it sets the zero flag to 1 if edx is null, else to 0
 ```
 MOVNTDQ : mov DQ (Double Quadword which means 2 x 4 x 2 = 16 octets = 128 bits) in the source operand (second operand) to the destination operand (first operand) using a non-temporal hint to prevent caching of the data during the write to memory.
 
