@@ -6,7 +6,7 @@
 ;    By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/12/13 14:29:53 by ebaudet           #+#    #+#              ;
-;    Updated: 2019/10/07 18:05:01 by ebaudet          ###   ########.fr        ;
+;    Updated: 2019/10/10 11:56:49 by ebaudet          ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 section .text
@@ -16,9 +16,9 @@ section .text
 	extern _ft_memcpy
 
 _ft_strdup:
-	test	rdi, rdi
-	jz		error
-	xor		rax, rax
+	test	rdi, rdi        ; test 1st arg (RDI)
+	jz		error           ; if null, jump to label <error>
+	xor		rax, rax        ; set RAX to 0
 
 	push	rdi 			; save source in stack
 	call	_ft_strlen
@@ -29,7 +29,7 @@ _ft_strdup:
 	push	rdi 			; save size of var in stack
 	call	_malloc
 	pop		rdx				; get size from stack
-	test	rax, rax 		; test return
+	test	rax, rax 		; test return malloc (RAX)
 	jz		error 			; if null, goto error
 
 	mov		rdi, rax		; destination
