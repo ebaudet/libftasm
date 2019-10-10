@@ -6,7 +6,7 @@
 ;    By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/12/13 14:29:31 by ebaudet           #+#    #+#              ;
-;    Updated: 2019/10/10 12:17:26 by ebaudet          ###   ########.fr        ;
+;    Updated: 2019/10/10 17:10:00 by ebaudet          ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 %define MACH_SYSCALL(nb)	0x2000000 | nb
@@ -17,6 +17,9 @@ section .data
 null:
 	.string db "(null)", 10
 	.len equ $ - null.string
+newline:
+	.string db 10
+	.len equ $ - newline.string
 
 section .text
 	global _ft_puts
@@ -28,7 +31,7 @@ _ft_puts:
 	call _ft_strlen               ; call ft_strlen function. No need to change
 	                              ; any register because it is a the same order
 	cmp rax, 0                    ; compare return ft_strlen to 0
-	je end                        ; if equal, jump to label <end>
+	je _newline                        ; if equal, jump to label <_newline>
 
 _ft_putchar:
 	mov rsi, rdi                  ; buf = s
@@ -36,7 +39,20 @@ _ft_putchar:
 	mov rdx, rax                  ; nbyte = len of s (ft_strlen(s))
 	mov rax, MACH_SYSCALL(WRITE)  ; define syscall as WRITE
 	syscall                       ; call the syscall.
-	ret                           ; return (WRITE change RAX to his value)
+	cmp rax, 0
+	jl _error
+	; ret                           ; return (WRITE change RAX to his value)
+
+_newline:
+	mov rdi, STDOUT               ; fildes = STDOUT (1)
+	mov rsi, [rel newline.string] ; buf = s
+	mov rdx, [rel newline.len]    ; nbyte = len of s (ft_strlen(s))
+	mov rax, MACH_SYSCALL(WRITE)  ; define syscall as WRITE
+	syscall                       ; call the syscall.
+	cmp rax, 0
+	jl _error
+	mov rax, 10
+	ret
 
 _put_null:
 	mov rdi, STDOUT               ; fildes = STDOUT (1)
@@ -46,8 +62,8 @@ _put_null:
 	syscall                       ; call the syscall
 	ret                           ; return (WRITE change RAX to his value)
 
-end:
-	ret                           ; return. RAX == 0
+_error:
+	ret
 
 ; int		ft_puts(const char *s);
 ;

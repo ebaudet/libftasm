@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 12:30:51 by ebaudet           #+#    #+#             */
-/*   Updated: 2019/10/10 12:26:31 by ebaudet          ###   ########.fr       */
+/*   Updated: 2019/10/10 16:05:55 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,25 +201,33 @@ int		main(void)
 
 	// ======= ft_puts ========
 	printf("\n======= ft_puts =========\n");
+	int res_put = 0;
 
 	puts("ici puts, puis ft_puts");
 	puts("ici puts, puis ft_puts");
-	ft_puts("ici ft_puts, avant puts\n");
+	ft_puts("ici ft_puts, avant puts");
 
-	ft_puts("coucou\n");
-	ft_puts("salrweoijr oweij pqwoeijr qpwoiei rpqvwjiejn fewirgn welirjfncq pwoeifij pqoi%^&*()9876545^&*()987654%^&898765^789876\n");
-	puts("ft_puts:\"");
-	ft_puts("");
-	puts("\", puts:\"");
-	puts("");
-	puts("\"\n");
+	ft_puts("coucou");
+	ft_puts("salrweoijr oweij pqwoeijr qpwoiei rpqvwjiejn fewirgn welirjfncq pwoeifij pqoi%^&*()9876545^&*()987654%^&898765^789876");
 
-	puts("ft_puts:\"");
-	ft_puts(NULL);
-	puts("\", puts:\"");
-	puts(NULL);
-	puts("\"\n");
-	ft_puts("\033[32mSUCCESS\033[m ft_puts\n");
+	printf("\n\nft_puts:\"");
+	res_put = ft_puts("Hello word");
+	printf("\"[%d], puts:\"", res_put);
+	res_put = puts("Hello word");
+	printf("\"[%d]\n", res_put);
+
+	printf("\n\nft_puts:\"");
+	res_put = ft_puts("");
+	printf("\"[%d], puts:\"", res_put);
+	res_put = puts("");
+	printf("\"[%d]\n", res_put);
+
+	printf("ft_puts:\"");
+	res_put = ft_puts(NULL);
+	printf("\"[%d], puts:\"", res_put);
+	res_put = puts(NULL);
+	printf("\"[%d]\n", res_put);
+	ft_puts("\033[32mSUCCESS\033[m ft_puts");
 
 	// ******************************
 	// *********** PART 2 ***********
