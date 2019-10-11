@@ -6,7 +6,7 @@
 ;    By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/12/18 22:38:59 by ebaudet           #+#    #+#              ;
-;    Updated: 2018/12/21 23:45:25 by ebaudet          ###   ########.fr        ;
+;    Updated: 2019/10/11 15:48:29 by ebaudet          ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -15,9 +15,6 @@
 %define READ				3
 %define WRITE				4
 %define BUFF_SIZE			0xFF ; max size. otherwise byte data exceeds bounds
-
-; read(int fd, user_addr_t cbuf, user_size_t nbyte)
-; write(int fd, user_addr_t cbuf, user_size_t nbyte)
 
 section .data
 buffer:
@@ -28,26 +25,32 @@ section .text
 
 _ft_cat:
 read:
-	lea rsi, [rel buffer.buf]
-	mov rdx, BUFF_SIZE
-	mov rax, MACH_SYSCALL(READ)
-	syscall
-	jc end ; if carry flag is set to error
-	test rax, rax
-	jz end
+	lea rsi, [rel buffer.buf]    ; buf =
+	mov rdx, BUFF_SIZE           ; nbyte = 0xFF
+	mov rax, MACH_SYSCALL(READ)  ; define syscall as READ
+	syscall                      ; call the syscall
+	jc end                       ; if carry flag is set to error
+	test rax, rax                ; test RAX
+	jz end                       ; if RAX = 0, jump to label <end>
 write:
-	push rdi
-	mov rdi, STDOUT
-	mov rdx, rax
-	mov rax, MACH_SYSCALL(WRITE)
-	syscall
-	pop rdi
-	jmp read
+	push rdi                     ; save fd (RDI) on stack
+	mov rdi, STDOUT              ; fildes = STDOUT (1)
+	mov rdx, rax                 ; nbyte = return of read
+	mov rax, MACH_SYSCALL(WRITE) ; define syscall as WRITE
+	syscall                      ; call the syscall
+	pop rdi                      ; get old RDI
+	jmp read                     ; jump to label <read>
 end:
-	xor rax, rax
-	ret
+	xor rax, rax                 ; RAX = 0
+	ret                          ; return
 
-; Ordre des arguments d'une fonction
+
+; void	ft_cat(int fd);
+;
+; Arguments order in a function :
 ; %rdi, %rsi, %rdx, %rcx, %r8 and %r9
-; retour d'une fonction
+; Return value :
 ; %rax
+
+; ssize_t	write(int fildes, const void *buf, size_t nbyte);
+; ssize_t	read(int fildes, void *buf, size_t nbyte);
