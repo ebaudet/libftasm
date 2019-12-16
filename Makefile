@@ -6,7 +6,7 @@
 #    By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/11 15:02:11 by ebaudet           #+#    #+#              #
-#    Updated: 2018/12/21 13:44:22 by ebaudet          ###   ########.fr        #
+#    Updated: 2019/12/16 21:15:28 by ebaudet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # main makefile :
@@ -20,9 +20,11 @@ SRC		= main.c
 OBJ_DIR	= obj
 INC		= -I inc
 OBJ		= $(addprefix obj/, $(SRC:.c=.o))
-ASRC	= ft_bzero.s ft_strcat.s ft_tolower.s ft_toupper.s ft_isascii.s \
-		ft_isalnum.s ft_isalpha.s ft_isdigit.s ft_isprint.s ft_puts.s \
-		ft_strlen.s ft_memset.s ft_memcpy.s ft_strdup.s ft_cat.s
+ASRC	= ft_bzero.s ft_strcat.s ft_isalpha.s ft_isdigit.s ft_isalnum.s \
+		  ft_isascii.s ft_isprint.s ft_toupper.s ft_tolower.s ft_puts.s \
+		  ft_strlen.s ft_memset.s ft_memcpy.s ft_strdup.s \
+		  ft_cat.s \
+		  ft_strncat.s
 AOBJ	= $(addprefix obj/, $(ASRC:.s=.o))
 
 all: $(NAME) $(TEST)
@@ -37,7 +39,7 @@ $(NAME): $(AOBJ)
 
 obj/%.o: %.c
 	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -c $^ -o $@  $(INC)
+	@$(CC) -c $^ -o $@  $(INC)
 
 obj/%.o: src/%.s
 	@mkdir -p $(OBJ_DIR)
@@ -52,26 +54,34 @@ clean:
 fclean: clean
 	@/bin/rm -rf $(NAME)
 	@/bin/rm -rf $(TEST)
+	@/bin/rm -rf a.out
 	@echo "fclean [\033[32mDONE\033[m]"
 
 re: fclean all
 
 # tests
 minima:
-	nasm -f macho64 minima.s -o minima.o
+	@mkdir -p $(OBJ_DIR)
+	nasm -f macho64 example/minima.s -o $(OBJ_DIR)/minima.o
 	ld minima.o -macosx_version_min 10.12 -lSystem
 	./a.out
+
 libc:
-	nasm -f macho64 libc.s -o libc.o
+	@mkdir -p $(OBJ_DIR)
+	nasm -f macho64 example/libc.s -o $(OBJ_DIR)/libc.o
 	ld libc.o -macosx_version_min 10.12 -lSystem
 	./a.out
+
 syscall:
-	nasm -f macho64 syscall.s -o syscall.o
+	@mkdir -p $(OBJ_DIR)
+	nasm -f macho64 example/syscall.s -o $(OBJ_DIR)/syscall.o
 	ld syscall.o -macosx_version_min 10.12 -lSystem
 	./a.out
+
 test:
-	nasm -f macho64 test.s -o test.o
-	ld test.o -macosx_version_min 10.12 -lSystem
+	@mkdir -p $(OBJ_DIR)
+	nasm -f macho64 example/test.s -o $(OBJ_DIR)/test.o
+	ld $(OBJ_DIR)/test.o -macosx_version_min 10.12 -lSystem
 	./a.out
 
 .PHONY: all clean fclean re

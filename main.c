@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 12:30:51 by ebaudet           #+#    #+#             */
-/*   Updated: 2019/10/11 14:43:43 by ebaudet          ###   ########.fr       */
+/*   Updated: 2019/12/16 22:06:56 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,7 @@
 
 int		main(void)
 {
-	// char tabint[11] = "0123456789\0";
-	// char tabchar[53] = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM\0";
-	// char tabspecial[26] = "!@#$%^&*()_+{}|[];:,./<>?\0";
 	int error;
-
 
 	// ******************************
 	// *********** PART 1 ***********
@@ -51,31 +47,45 @@ int		main(void)
 
 
 	error = 0;
-	// char string_cat[30];
-	char string_cat[22] = "\0n1234567890123456789";
-	// bzero(string_cat, 20);
+
+
 	// char big_string[2000000];
 	// bzero(big_string, 2000000);
-
-	char string_cat2[22] = "\0n1234567890123456789";
-	// bzero(string_cat2, 20);
 	// char big_string2[2000000];
 	// bzero(big_string2, 2000000);
+	// int i = 0;
+	// while (++i < 50000)
+	// {
+
+	// 	ft_strcat(big_string, "test");
+	// 	strcat(big_string2, "test");
+	// 	if (strcmp(big_string, big_string2) != 0) {
+	// 		printf("\033[31mERROR\033[m ft_strcat : [%s|%s]\n", big_string2, big_string2);
+	// 		error++;
+	// 	}
+	// }
+
+
+
+	// bzero(big_string, 2000000);
+	// bzero(big_string2, 2000000);
+	// while (++i < 2000)
+	// {
+	// 	ft_strcat(big_string, "test jhfkhw abdfk jabhsd kfjabsdkfjabskdjfb askjdbf askjhdbf ksajhdbf ksajhdbf kjashdbf kjashdbf\n");
+	// 	strcat(big_string2, "test jhfkhw abdfk jabhsd kfjabsdkfjabskdjfb askjdbf askjhdbf ksajhdbf ksajhdbf kjashdbf kjashdbf\n");
+	// 	if (strcmp(big_string, big_string2) != 0) {
+	// 		printf("\033[31mERROR\033[m ft_strcat : [%s|%s]\n", big_string2, big_string2);
+	// 		error++;
+	// 	}
+	// }
+
+
+
+	char string_cat[22] = "\0n1234567890123456789";
+	char string_cat2[22] = "\0n1234567890123456789";
 
 	ft_strcat(string_cat, "t\0test");
 	strcat(string_cat2, "t\0test");
-	// int i = 0;
-	// while (++i < 200000)
-	// {
-		// ft_strcat(big_string, "test jhfkhw abdfk jabhsd kfjabsdkfjabskdjfb askjdbf askjhdbf ksajhdbf ksajhdbf kjashdbf kjashdbf\n");
-		// strcat(big_string2, "test jhfkhw abdfk jabhsd kfjabsdkfjabskdjfb askjdbf askjhdbf ksajhdbf ksajhdbf kjashdbf kjashdbf\n");
-		// ft_strcat(big_string, "test");
-		// strcat(big_string2, "test");
-		// if (strcmp(big_string, big_string2) != 0) {
-			// printf("\033[31mERROR\033[m ft_strcat : [%s|%s]\n", big_string2, big_string2);
-			// error++;
-		// }
-	// }
 	if (strcmp(string_cat, string_cat2) != 0) {
 		printf("\033[31mERROR\033[m ft_strcat : [%s|%s]\n", string_cat, string_cat2);
 		error++;
@@ -93,6 +103,19 @@ int		main(void)
 		printf("\033[32m{OK}\033[m string_cat : '%s', string_cat2 : '%s'\n", string_cat, string_cat2);
 
 	}
+
+
+
+
+
+	// char string_cat[22] = "\0n1234567890123456789";
+
+	// char string_cat2[22] = "\0n1234567890123456789";
+
+	ft_strcat(string_cat, "hey");
+	strcat(string_cat2, "t\0test");
+
+
 
 	// for null pointer, strcat provoc a segmentation fault :
 	//
@@ -203,13 +226,14 @@ int		main(void)
 	printf("\n======= ft_puts =========\n");
 	int res_put = 0;
 
-	puts("ici puts, puis ft_puts");
-	puts("ici puts, puis ft_puts");
-	ft_puts("ici ft_puts, avant puts");
-
+	puts("coucou");
 	ft_puts("coucou");
-	ft_puts("salrweoijr oweij pqwoeijr qpwoiei rpqvwjiejn fewirgn welirjfncq pwoeifij pqoi%^&*()9876545^&*()987654%^&898765^789876");
+
+	puts("coucou\0sdds");
+	ft_puts("coucou\0sdds");
+
 	puts("salrweoijr oweij pqwoeijr qpwoiei rpqvwjiejn fewirgn welirjfncq pwoeifij pqoi%^&*()9876545^&*()987654%^&898765^789876");
+	ft_puts("salrweoijr oweij pqwoeijr qpwoiei rpqvwjiejn fewirgn welirjfncq pwoeifij pqoi%^&*()9876545^&*()987654%^&898765^789876");
 
 	printf("\n\nft_puts:\"");
 	fflush(stdout);
@@ -237,6 +261,25 @@ int		main(void)
 	res_put = puts(NULL);
 	printf("\"[%d]\n", res_put);
 	fflush(stdout);
+
+
+	int a1 = puts("ici puts, puis ft_puts");
+	int a2 = ft_puts("int a1 = ici ft_puts, avant puts");
+	if (a1 != a2)
+		printf("\033[31mERROR\033[m ft_puts bad return value (expected: %d | get: %d)\n", a1, a2);
+
+	a1 = puts(NULL);
+	a2 = ft_puts(NULL);
+	if (a1 != a2)
+		printf("\033[31mERROR\033[m ft_puts bad return value (expected: %d | get: %d)\n", a1, a2);
+
+	a1 = puts("coucou dfa dfasd fasd f");
+	a2 = ft_puts("coucou1srtertwert wert wert ");
+	printf("%d %d\n", a1, a2);
+	if (a1 != a2)
+		printf("\033[31mERROR\033[m ft_puts bad return value (expected: %d | get: %d)\n", a1, a2);
+
+
 	ft_puts("\033[32mSUCCESS\033[m ft_puts");
 
 	// ******************************
@@ -273,8 +316,8 @@ int		main(void)
 	// ======= ft_memset ========
 	printf("\n======= ft_memset =========\n");
 	error = 0;
-	char memset1[27] = "qwertyuiopasdfghjklzxcvbnm\0";
-	char memset2[27] = "qwertyuiopasdfghjklzxcvbnm\0";
+	char memset1[27] = "\0qwertyuiopasdfghjklzxcvbn\0";
+	char memset2[27] = "\0qwertyuiopasdfghjklzxcvbn\0";
 
 	ft_memset(memset1,'a', 5);
 	memset(memset2,'a', 5);
@@ -308,6 +351,22 @@ int		main(void)
 			error++;
 		}
 	}
+
+
+
+
+	char memcpy3[5] = "qwer\0";
+	char memcpy4[5] = "qwer\0";
+	ft_memcpy(memcpy3, "a", 4);
+	memcpy(memcpy4, "a", 4);
+	for (int i = 0; i < 4; i++) {
+		if (memcpy3[i] != memcpy4[i]) {
+			printf("\033[31mERROR\033");
+			error++;
+		}
+	}
+
+
 	if (error == 0)
 		printf("\033[32mSUCCESS\033[m ft_memcpy\n");
 
@@ -338,7 +397,64 @@ int		main(void)
 	printf("\n======= ft_cat =========\n");
 	int fd = open("blob.txt", O_RDONLY);
 	ft_cat(fd);
+	// printf("\nRepeat it:\n");
+	// fflush(stdout);
+	// ft_cat(0);
 	printf("\n======= fin ft_cat =========\n");
+
+	// ******************************
+	// *********** PART Bonus *******
+	// ******************************
+
+	printf("\n*********** PART Bonus ***********\n");
+
+	// ======= ft_strcat ========
+	printf("\n======= ft_strncat =========\n");
+
+
+	error = 0;
+
+	char string_ncat[22] = "\0n1234567890123456789";
+	char string_ncat2[22] = "\0n1234567890123456789";
+	// test 1
+	ft_strncat(string_ncat, "1t\0test", 6);
+	strncat(string_ncat2, "1t\0test", 6);
+	if (strcmp(string_ncat, string_ncat2) != 0) {
+		printf("\033[31mERROR\033[m ft_strcat : [%s|%s]\n", string_ncat, string_ncat2);
+		error++;
+	} else {
+		printf("\033[32m{OK}\033[m string_ncat : '%s', string_ncat2 : '%s'\n", string_ncat, string_ncat2);
+	}
+	// test 2
+	ft_strncat(string_ncat, ".2test", 4);
+	strncat(string_ncat2, ".2test", 4);
+	if (strcmp(string_ncat, string_ncat2) != 0) {
+		printf("\033[31mERROR\033[m ft_strcat : [%s|%s]\n", string_ncat, string_ncat2);
+		error++;
+	} else {
+		printf("\033[32m{OK}\033[m string_ncat : '%s', string_ncat2 : '%s'\n", string_ncat, string_ncat2);
+	}
+	// test 3
+	ft_strncat(string_ncat, ".3test", -3);
+	strncat(string_ncat2, ".3test", -3);
+	if (strcmp(string_ncat, string_ncat2) != 0) {
+		printf("\033[31mERROR\033[m ft_strcat : [%s|%s]\n", string_ncat, string_ncat2);
+		error++;
+	} else {
+		printf("\033[32m{OK}\033[m string_ncat : '%s', string_ncat2 : '%s'\n", string_ncat, string_ncat2);
+	}
+	// test 4
+	ft_strncat(string_ncat, ".4test", 50);
+	strncat(string_ncat2, ".4test", 50);
+	if (strcmp(string_ncat, string_ncat2) != 0) {
+		printf("\033[31mERROR\033[m ft_strcat : [%s|%s]\n", string_ncat, string_ncat2);
+		error++;
+	} else {
+		printf("\033[32m{OK}\033[m string_ncat : '%s', string_ncat2 : '%s'\n", string_ncat, string_ncat2);
+	}
+
+	if (error == 0)
+		printf("\033[32mSUCCESS\033[m ft_strcat\n");
 
 	return 0;
 }
