@@ -10,8 +10,7 @@ Linux:
 ```
 ### II - Test library functions
 ```
-bash Usage
-(equivalent to 'make & ./test.out')
+make && ./test.out
 ```
 
 ### III - Use lldb (debugger) to read registers
@@ -255,7 +254,7 @@ MOVNTDQ : mov DQ (Double Quadword which means 2 x 4 x 2 = 16 octets = 128 bits) 
 ## 0x05 - Must-Read and Must-Watch links
 
 Please read very interesting PDFs in the resources folder of this git
-
+* =====> [NASM Tutorial](https://cs.lmu.edu/~ray/notes/nasmtutorial/) <=====
 * About [Calling conventions](https://stackoverflow.com/questions/2535989/what-are-the-calling-conventions-for-unix-linux-system-calls-on-i386-and-x86-6)(https://en.wikipedia.org/wiki/X86_calling_conventions)
 * [Great video about compilers & asm](https://img.youtube.com/vi/bSkpMdDe4g4/0.jpg)](https://www.youtube.com/watch?v=bSkpMdDe4g4)
 * Or the [System V ABI](https://wiki.osdev.org/System_V_ABI)

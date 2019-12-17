@@ -6,7 +6,7 @@
 ;    By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/12/11 14:36:12 by ebaudet           #+#    #+#              ;
-;    Updated: 2018/12/12 14:33:57 by ebaudet          ###   ########.fr        ;
+;    Updated: 2019/12/17 21:55:35 by ebaudet          ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 section .data
@@ -26,8 +26,8 @@ start:
 _main:
 	push rbp
 	mov rbp, rsp
-	sub rsp, 16
 	lea rdi, [rel hello.string]
 	call _printf
-	leave
+	pop rbp
+	xor rax, rax
 	ret

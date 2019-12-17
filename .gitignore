@@ -1,3 +1,4 @@
 *.o
 *.out
 libfts.a
+.DS_Store

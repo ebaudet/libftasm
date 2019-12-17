@@ -6,7 +6,7 @@
 ;    By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/12/11 14:58:03 by ebaudet           #+#    #+#              ;
-;    Updated: 2018/12/18 01:10:47 by ebaudet          ###   ########.fr        ;
+;    Updated: 2019/12/17 21:56:44 by ebaudet          ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 %define MACH_SYSCALL(nb)	0x2000000 | nb
@@ -29,11 +29,11 @@ start:
 _main:
 	push rbp
 	mov rbp, rsp
-	sub rsp, 16
 	mov rdi, STDOUT
 	lea rsi, [rel hello.string]
 	mov rdx, hello.len
 	mov rax, MACH_SYSCALL(WRITE)
 	syscall
-	leave
+	pop rbp
+	xor rax, rax
 	ret
