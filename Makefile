@@ -6,7 +6,7 @@
 #    By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/11 15:02:11 by ebaudet           #+#    #+#              #
-#    Updated: 2019/12/16 21:15:28 by ebaudet          ###   ########.fr        #
+#    Updated: 2019/12/17 17:46:17 by ebaudet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # main makefile :
@@ -24,7 +24,8 @@ ASRC	= ft_bzero.s ft_strcat.s ft_isalpha.s ft_isdigit.s ft_isalnum.s \
 		  ft_isascii.s ft_isprint.s ft_toupper.s ft_tolower.s ft_puts.s \
 		  ft_strlen.s ft_memset.s ft_memcpy.s ft_strdup.s \
 		  ft_cat.s \
-		  ft_strncat.s
+		  ft_strncat.s ft_sum_naturals.s ft_factoriel.s ft_pow.s ft_psqrt.s \
+		  ft_strchr.s
 AOBJ	= $(addprefix obj/, $(ASRC:.s=.o))
 
 all: $(NAME) $(TEST)

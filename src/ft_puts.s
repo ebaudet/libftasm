@@ -6,7 +6,7 @@
 ;    By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2018/12/13 14:29:31 by ebaudet           #+#    #+#              ;
-;    Updated: 2019/10/11 15:23:08 by ebaudet          ###   ########.fr        ;
+;    Updated: 2019/12/17 20:40:00 by ebaudet          ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 %define MACH_SYSCALL(nb)	0x2000000 | nb
@@ -26,8 +26,10 @@ section .text
 _ft_puts:
 	cmp rdi, 0                    ; compare s to NULL
 	je _put_null                  ; if equal, jump label <_put_null>
+	push rbx                      ; Call stack must be aligned
 	call _ft_strlen               ; call ft_strlen function. No need to change
 	                              ; any register because it is a the same order
+	pop rbx                       ; Fix up stack
 	mov rsi, rdi                  ; buf = s
 	mov rdi, STDOUT               ; fildes = STDOUT (1)
 	mov rdx, rax                  ; nbyte = len of s (ft_strlen(s))

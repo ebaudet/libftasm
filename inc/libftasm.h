@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 12:33:31 by ebaudet           #+#    #+#             */
-/*   Updated: 2019/12/16 22:09:50 by ebaudet          ###   ########.fr       */
+/*   Updated: 2019/12/17 20:54:40 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,34 +18,39 @@
 /*
 ** functions part 1
 */
-void	ft_bzero(void *s, size_t n);
-char	*ft_strcat(char *s1, const char *s2);
-int		ft_isalpha(int c);
-int		ft_isdigit(int c);
-int		ft_isalnum(int c);
-int		ft_isascii(int c);
-int		ft_isprint(int c);
-int		ft_toupper(int c);
-int		ft_tolower(int c);
-int		ft_puts(const char *s);
+void			ft_bzero(void *s, size_t n);
+char			*ft_strcat(char *s1, const char *s2);
+int				ft_isalpha(int c);
+int				ft_isdigit(int c);
+int				ft_isalnum(int c);
+int				ft_isascii(int c);
+int				ft_isprint(int c);
+int				ft_toupper(int c);
+int				ft_tolower(int c);
+int				ft_puts(const char *s);
 
 /*
 ** functions part 2
 */
-size_t	ft_strlen(const char *s);
-void	*ft_memset(void *b, int c, size_t len);
-void	*ft_memcpy(void *s1, void const *s2, size_t n);
-char	*ft_strdup(const char *s1);
+size_t			ft_strlen(const char *s);
+void			*ft_memset(void *b, int c, size_t len);
+void			*ft_memcpy(void *s1, void const *s2, size_t n);
+char			*ft_strdup(const char *s1);
 
 /*
 ** function part 3
 */
-void	ft_cat(int fd);
+void			ft_cat(int fd);
 
 /*
 ** functions part 4 : bonus
 */
-char	*ft_strncat(char *s1, const char *s2, size_t n);
+char			*ft_strncat(char *s1, const char *s2, size_t n);
+int				ft_sum_naturals(unsigned int n);
+int				ft_factoriel(unsigned int n);
+unsigned int	ft_pow(unsigned int base, unsigned int power);
+int				ft_psqrt(int pow);
+char			*ft_strchr(const char *s, int c);
 // void	*ft_memccpy(void *s1, void const *s2, int c, size_t n);
 
 
