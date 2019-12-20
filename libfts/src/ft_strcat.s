@@ -13,23 +13,25 @@ segment .text
 	global _ft_strcat
 
 _ft_strcat:
-	push rdi          ; save ptr s1 on stack
+	push rbx			; save reserved register while used
+	push rdi			; save ptr s1 on stack
 while:
-	cmp byte[rdi], 0  ; compare *s1 to 0
-	je while2         ; if equal, jump label <while2>
-	inc rdi           ; s1++
-	jmp while         ; jump label <while>
+	cmp byte[rdi], 0	; compare *s1 to 0
+	je while2			; if equal, jump label <while2>
+	inc rdi				; s1++
+	jmp while			; jump label <while>
 while2:
-	cmp byte[rsi], 0  ; compare *s2 to 0
-	je end            ; if equal, jump label <end>
-	mov rbx, [rsi]    ; RBX = *s2
-	mov [rdi], rbx    ; *s1 = RBX
-	inc rdi           ; s1++
-	inc rsi           ; s2++
-	jmp while2        ; jump label <while2>
+	cmp byte[rsi], 0	; compare *s2 to 0
+	je end				; if equal, jump label <end>
+	mov rbx, [rsi]		; RBX = *s2
+	mov [rdi], rbx		; *s1 = RBX
+	inc rdi				; s1++
+	inc rsi				; s2++
+	jmp while2			; jump label <while2>
 end:
-	pop rax           ; pop s1 to return it
-	ret               ; return
+	pop rax				; pop s1 to return it
+	pop rbx				; restore reserved register befor quit
+	ret					; return
 
 ; char	*ft_strcat(char *s1, const char *s2);
 ;
